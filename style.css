@@ -1,9 +1,0 @@
-header{
-    display: flex;
-    gap: 80px;
-}
-.header-list {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
