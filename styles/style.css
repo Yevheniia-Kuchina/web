@@ -7,6 +7,22 @@ body{
     background-color: #F5F5F5;
 }
 
+h1{
+    font-size: 54px;
+    font-weight: 700;
+}
+
+h6{
+    font-size: 16px;
+    font-weight: 700;
+    color: #FD7E14;
+}
+
+p{
+    font-size: 16px;
+    opacity: 0.8;
+}
+
 .contacts-header{
     margin: 20px 40px;
     font-size: 16px;
