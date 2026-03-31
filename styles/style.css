@@ -23,6 +23,16 @@ p{
     opacity: 0.8;
 }
 
+button{
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 17px 40px;
+    border-radius: 12px;
+    font-size: 20;
+    font-weight: 600;
+}
+
 .contacts-header{
     margin: 20px 40px;
     font-size: 16px;
@@ -56,4 +66,17 @@ input {
     border: none;
     height: 40px;
     padding-left: 16px;
+}
+
+.shop-now{
+    display: flex;
+}
+
+.shop-now__info{
+    flex: 1;
+}
+
+.shop-now__img{
+    flex: 1;
+    width: 50%;
 }
