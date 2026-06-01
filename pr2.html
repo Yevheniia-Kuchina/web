@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Робота з таблицями та списками в HTML</title>
+</head>
+<body>
+    <h1>Практична робота №2</h1>
+
+    <h2>Таблиці</h2>
+
+    <h3>Таблиця розкладу занять</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>№ пари</th>
+                <th>Час проведення</th>
+                <th>Понеділок</th>
+                <th>Вівторок</th>
+                <th>Середа</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>08:0 – 09:20</td>
+                <td>WEB (ауд. 133)</td>
+                <td>ФВ (Стадіон)</td>
+                <td>ЦС (ауд. 220)</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>09:30 – 10:50</td>
+                <td>АК (ауд. 220)</td>
+                <td>ЦС (ауд. 0-24-1)</td>
+                <td>ФВ (Стадіон)</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>11:10 – 12:30</td>
+                <td>ЦС (ауд. 220)</td>
+                <td>СОС (дистанційно)</td>
+                <td>АК (ауд. 220)</td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Таблиця з об'єднаними комірками</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Lorem</th>
+                <th>Ipsum</th>
+                <th>Dolor</th>
+                <th>Sit amet</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2">Lorem ipsum</td>
+                <td>Dolor sit</td>
+                <td>150 000</td>
+                <td rowspan="2">370 000</td>
+            </tr>
+            <tr>
+                <td>Amet consectetur</td>
+                <td>220 000</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Adipiscing elit</td>
+                <td>Sed do</td>
+                <td>95 000</td>
+                <td rowspan="2">215 000</td>
+            </tr>
+            <tr>
+                <td>Eiusmod tempor</td>
+                <td>120 000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Labore et dolore</td>
+                <td colspan="2">Magna aliqua</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h2>Списки</h2>
+
+    <h3>Багаторівневий список</h3>
+    <ul>
+        <li>Lorem ipsum</li>
+        <li>Dolor sit amet
+            <ul>
+                <li>Consectetur
+                    <ul>
+                        <li>Adipiscing</li>
+                        <li>Elit sed</li>
+                    </ul>
+                </li>
+                <li>Do eiusmod</li>
+            </ul>
+        </li>
+        <li>Tempor incididunt</li>
+        <li>Ut labore</li>
+    </ul>
+
+    <h3>Список з різними маркерами</h3>
+    <ul type="square">
+        <li>Veniam quis nostrud
+            <ul type="circle">
+                <li>Exercitation ullamco</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Нумерований список з різними типами нумерації</h3>
+    <ol type="A">
+        <li>Ex ea commodo
+            <ol type="I">
+                <li>Duis aute irure
+                    <ol type="1">
+                        <li>Dolor in reprehenderit</li>
+                        <li>In voluptate velit</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+        <li>Esse cillum dolore</li>
+    </ol>
+
+</body>
+</html>
