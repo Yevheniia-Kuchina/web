@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практична робота №5</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            max-width: 350px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="registrationForm" novalidate>
+        <div class="form-group">
+            <label for="username">Ім'я користувача:</label>
+            <input type="text" id="username" name="username">
+            <span class="error" id="usernameError">Обов'язкове поле</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span class="error" id="emailError">Некоректний формат email</span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password">
+            <span class="error" id="passwordError">Мінімум 8 символів, цифра та велика літера</span>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Підтвердження паролю:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword">
+            <span class="error" id="confirmPasswordError">Паролі не співпадають</span>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="text" id="phone" name="phone" placeholder="+380123456789">
+            <span class="error" id="phoneError">Некоректний формат телефону</span>
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Дата народження:</label>
+            <input type="date" id="dob" name="dob">
+            <span class="error" id="dobError">Вам має бути 18+ років</span>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="agree" name="agree">
+            <label for="agree">Погоджуюсь з умовами</label>
+        </div>
+        <span class="error" id="agreeError" style="display:none; margin-bottom:15px;">Необхідна згода</span>
+
+        <button type="submit">Зареєструватися</button>
+        <div class="success-message" id="successMsg">Реєстрація успішна!</div>
+    </form>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+
+            const username = document.getElementById('username');
+            const usernameError = document.getElementById('usernameError');
+            if (username.value.trim() === '') {
+                usernameError.style.display = 'block';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            const password = document.getElementById('password');
+            const passwordError = document.getElementById('passwordError');
+            const passRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!passRegex.test(password.value)) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            const confirmPassword = document.getElementById('confirmPassword');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            if (confirmPassword.value !== password.value || confirmPassword.value === '') {
+                confirmPasswordError.style.display = 'block';
+                isValid = false;
+            } else {
+                confirmPasswordError.style.display = 'none';
+            }
+
+            const phone = document.getElementById('phone');
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^\+?\d{10,13}$/;
+            if (!phoneRegex.test(phone.value)) {
+                phoneError.style.display = 'block';
+                isValid = false;
+            } else {
+                phoneError.style.display = 'none';
+            }
+
+            const dob = document.getElementById('dob');
+            const dobError = document.getElementById('dobError');
+            if (dob.value === '') {
+                dobError.style.display = 'block';
+                isValid = false;
+            } else {
+                const birthDate = new Date(dob.value);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                if (age < 18) {
+                    dobError.style.display = 'block';
+                    isValid = false;
+                } else {
+                    dobError.style.display = 'none';
+                }
+            }
+
+            const agree = document.getElementById('agree');
+            const agreeError = document.getElementById('agreeError');
+            if (!agree.checked) {
+                agreeError.style.display = 'block';
+                isValid = false;
+            } else {
+                agreeError.style.display = 'none';
+            }
+
+            const successMsg = document.getElementById('successMsg');
+            if (isValid) {
+                successMsg.style.display = 'block';
+                this.reset();
+            } else {
+                successMsg.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
